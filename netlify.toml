@@ -1,0 +1,10 @@
+# Static single-page site: no framework, no dependencies, no build step.
+[build]
+  command = ""
+  publish = "."
+
+# The site's only page isn't named index.html, so serve it at the root.
+[[redirects]]
+  from = "/"
+  to = "/engr_jan_sher_khan_security_solar_solutions_specialist.html"
+  status = 200
