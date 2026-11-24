@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engr. Jan Sher Khan | Security &amp; Solar Solutions Specialist — KPK</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Supabase JS Client (Ready for your Supabase URL & Anon Key) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Google Fonts: Inter for English, Noto Nastaliq Urdu & Noto Sans Arabic for crisp Urdu rendering -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#07111F',
+              900: '#0B192C',
+              800: '#0F223D',
+              700: '#163054',
+            },
+            gold: {
+              300: '#F9DC8B',
+              400: '#F3C65F',
+              500: '#D4AF37',
+              600: '#B59024',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans Arabic', 'sans-serif'],
+            urdu: ['Noto Nastaliq Urdu', 'Noto Sans Arabic', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-navy-900 text-white font-sans antialiased selection:bg-gold-500 selection:text-navy-950 overflow-x-hidden">
+
+  <!-- Toast / Custom Notification Banner -->
+  <div id="toast-container" class="fixed top-20 right-4 left-4 sm:left-auto sm:w-96 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 bg-navy-950/90 backdrop-blur-md border-b border-gold-500/25">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-3">
+        <!-- Brand Logo & Name -->
+        <a href="#top" class="flex items-center gap-3 group min-w-0">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 p-0.5 shrink-0 shadow-lg shadow-gold-500/10">
+            <div class="w-full h-full bg-navy-900 rounded-[10px] flex items-center justify-center text-gold-400 font-extrabold text-lg">
+              JSK
+            </div>
+          </div>
+          <div class="truncate">
+            <div class="text-gold-400 font-extrabold text-base sm:text-lg tracking-tight leading-tight truncate" data-i18n="brandName">
+              Engr. Jan Sher Khan
+            </div>
+            <div class="text-slate-300 text-xs sm:text-sm truncate" data-i18n="brandSubtitle">
+              Security &amp; Solar Solutions Specialist
+            </div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-200">
+          <a href="#services" class="hover:text-gold-400 transition-colors" data-i18n="navServices">Expertise</a>
+          <a href="#projects" class="hover:text-gold-400 transition-colors" data-i18n="navProjects">Completed Work</a>
+          <a href="#reviews" class="hover:text-gold-400 transition-colors" data-i18n="navReviews">Client Reviews</a>
+          <a href="#survey" class="hover:text-gold-400 transition-colors" data-i18n="navSurvey">Free Site Survey</a>
+        </nav>
+
+        <!-- Actions: Language Switcher + Quick Call -->
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <button
+            id="lang-toggle"
+            type="button"
+            onclick="toggleLanguage()"
+            class="px-3.5 py-2.5 rounded-xl border border-gold-500/50 bg-navy-800 hover:bg-navy-700 text-gold-300 text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 shadow-sm cursor-pointer"
+            aria-label="Switch Language"
+          >
+            <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            </svg>
+            <span id="lang-toggle-label">اردو</span>
+          </button>
+
+          <a
+            href="tel:+923335827731"
+            class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-300 hover:to-gold-400 text-navy-950 font-bold text-sm shadow-lg shadow-gold-500/20 transition-all"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            <span dir="ltr">0333-5827731</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="top" class="relative pt-10 pb-16 sm:pt-16 sm:pb-24 border-b border-gold-500/20 overflow-hidden">
+    <div class="pointer-events-none absolute top-6 right-6 w-24 h-24 border-t-4 border-r-4 border-gold-500/30 rounded-tr-2xl hidden md:block"></div>
+    <div class="pointer-events-none absolute bottom-6 left-6 w-24 h-24 border-b-4 border-l-4 border-gold-500/30 rounded-bl-2xl hidden md:block"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-start">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-gold-500/20 via-gold-400/25 to-gold-500/20 border border-gold-400/50 text-gold-300 text-xs sm:text-sm font-bold tracking-wide shadow-md">
+            <span data-i18n="trustBadge">★ CERTIFIED ENGINEER (PEC REGISTERED) • FREE SITE SURVEY &amp; QUOTE ★</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+            <span class="text-white block" data-i18n="heroHeadline1">Complete Security &amp;</span>
+            <span class="text-gold-400 block mt-1" data-i18n="heroHeadline2">Clean Energy Solutions</span>
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed" data-i18n="heroSubheadline">
+            Serving Residential, Commercial &amp; Industrial Clients All Across Khyber Pakhtunkhwa (KPK) with precision-engineered CCTV Surveillance, High-Voltage Electric Safety Fencing, and Turnkey Solar Power Plants.
+          </p>
+
+          <!-- Primary CTA Buttons -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3.5 pt-2">
+            <a
+              href="https://wa.me/923335827731?text=Assalam-o-Alaikum%20Engr.%20Jan%20Sher%20Khan%2C%20I%20would%20like%20to%20request%20a%20Free%20Site%20Survey%20%26%20Quote."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base shadow-lg shadow-emerald-900/40 transition-all"
+            >
+              <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+              </svg>
+              <span data-i18n="ctaWhatsapp">WhatsApp: 0333-5827731</span>
+            </a>
+
+            <a
+              href="#survey"
+              class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-300 hover:to-gold-400 text-navy-950 font-extrabold text-base shadow-lg shadow-gold-500/20 transition-all"
+            >
+              <span data-i18n="ctaSurvey">Request Free Site Survey</span>
+            </a>
+
+            <a
+              href="#reviews"
+              class="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-navy-800 hover:bg-navy-700 border border-gold-500/40 text-gold-300 font-semibold text-base transition-all"
+            >
+              <span data-i18n="ctaRate">Rate My Work ★</span>
+            </a>
+          </div>
+
+          <!-- Engineering Credentials & Live Rating Strip -->
+          <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-4">
+            <div class="bg-navy-800/90 border border-gold-500/25 rounded-2xl p-3.5 sm:p-4">
+              <div class="text-gold-400 font-extrabold text-xl sm:text-2xl flex items-center justify-center lg:justify-start gap-1">
+                <span id="hero-avg-rating">5.0</span>
+                <span class="text-base">★</span>
+              </div>
+              <div class="text-slate-300 text-xs sm:text-sm mt-0.5">
+                <span data-i18n="statRatingPrefix">Verified Rating</span> (<span id="hero-review-count">4</span>)
+              </div>
+            </div>
+
+            <div class="bg-navy-800/90 border border-gold-500/25 rounded-2xl p-3.5 sm:p-4">
+              <div class="text-gold-400 font-extrabold text-xl sm:text-2xl" data-i18n="statSavings">Up to 80%</div>
+              <div class="text-slate-300 text-xs sm:text-sm mt-0.5" data-i18n="statSavingsLabel">Electricity Bill Reduction</div>
+            </div>
+
+            <div class="bg-navy-800/90 border border-gold-500/25 rounded-2xl p-3.5 sm:p-4">
+              <div class="text-gold-400 font-extrabold text-xl sm:text-2xl" data-i18n="statCoverage">All KPK</div>
+              <div class="text-slate-300 text-xs sm:text-sm mt-0.5" data-i18n="statCoverageLabel">24/7 On-Site Support</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Card: Digital Business Card -->
+        <div class="lg:col-span-5">
+          <div class="bg-gradient-to-b from-navy-800 to-navy-950 border-2 border-gold-500/50 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+            <div class="flex items-start justify-between gap-4 border-b border-gold-500/25 pb-5">
+              <div>
+                <span class="inline-block px-2.5 py-1 rounded-lg bg-gold-500/15 text-gold-400 text-xs font-bold uppercase tracking-wider mb-2" data-i18n="cardRoleTag">
+                  PEC Certified Electrical Engineer
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-gold-400" data-i18n="brandName">Engr. Jan Sher Khan</h2>
+                <p class="text-slate-200 text-sm sm:text-base mt-1" data-i18n="brandSubtitle">Security &amp; Solar Solutions Specialist</p>
+              </div>
+              <div class="w-14 h-14 rounded-2xl bg-navy-900 border border-gold-500/40 flex items-center justify-center shrink-0 text-gold-400">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- 3 Core Specialties -->
+            <div class="py-5 space-y-3.5 border-b border-gold-500/25">
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-bold text-white text-sm sm:text-base" data-i18n="cardSpec1Title">CCTV Security Cameras</div>
+                  <div class="text-slate-400 text-xs sm:text-sm" data-i18n="cardSpec1Desc">24/7 Live Phone View • HD Night Vision</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-bold text-white text-sm sm:text-base" data-i18n="cardSpec2Title">Electric Safety Fencing</div>
+                  <div class="text-slate-400 text-xs sm:text-sm" data-i18n="cardSpec2Desc">High-Security Perimeter &amp; Instant Alarm</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-gold-500/15 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="font-bold text-white text-sm sm:text-base" data-i18n="cardSpec3Title">Solar Power Plants</div>
+                  <div class="text-slate-400 text-xs sm:text-sm" data-i18n="cardSpec3Desc">Hybrid, On-Grid &amp; Net-Metered Systems</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Direct Contact & Copy Number Row -->
+            <div class="pt-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div class="text-center sm:text-start">
+                <div class="text-xs text-slate-400 uppercase tracking-wider" data-i18n="directLineLabel">Call / WhatsApp Direct</div>
+                <div class="text-xl font-extrabold text-gold-400 tracking-wide" dir="ltr">0333-5827731</div>
+              </div>
+
+              <button
+                type="button"
+                onclick="copyPhoneNumber()"
+                class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-navy-900 hover:bg-navy-700 border border-gold-500/40 text-gold-300 text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <span data-i18n="copyNumberBtn">Copy Number</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Expertise / 3 Pillars Section WITH REAL VISUAL PHOTOS -->
+  <section id="services" class="py-16 sm:py-24 bg-navy-950/60 border-b border-gold-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-gold-400 font-bold text-xs sm:text-sm uppercase tracking-widest" data-i18n="servicesEyebrow">
+          Core Engineering Expertise
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2" data-i18n="servicesTitle">
+          Turnkey Security &amp; Solar Engineering Across KPK
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base mt-3" data-i18n="servicesDesc">
+          Every system is custom-engineered after a free on-site load &amp; risk assessment—built for maximum durability, clean wiring, and long-term reliability.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Pillar 1: CCTV Security Cameras -->
+        <div class="bg-navy-800/90 border border-gold-500/30 hover:border-gold-400 rounded-3xl overflow-hidden flex flex-col justify-between transition-all shadow-xl group">
+          <div>
+            <div class="relative h-48 overflow-hidden bg-navy-950 border-b border-gold-500/25">
+              <img
+                src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80"
+                alt="HD CCTV Security Camera Installation"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/20 to-transparent"></div>
+              <span class="absolute bottom-3 left-4 px-3 py-1 rounded-lg bg-navy-950/90 border border-gold-400/50 text-gold-300 text-xs font-bold">
+                24/7 Live Phone View
+              </span>
+            </div>
+            <div class="p-6 sm:p-7">
+              <h3 class="text-xl sm:text-2xl font-extrabold text-gold-400 mb-4" data-i18n="srv1Title">
+                CCTV Security Cameras
+              </h3>
+              <ul class="space-y-3 text-slate-200 text-sm sm:text-base">
+                <li class="flex items-start gap-2.5">
+                  <span class="text-gold-400 font-bold mt-0.5">•</span>
+                  <span data-i18n="srv1Point1">View Live Footage on Your Phone 24/7</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-gold-400 font-bold mt-0.5">•</span>
+                  <span data-i18n="srv1Point2">HD Night Vision &amp; Smart Motion Alerts</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-gold-400 font-bold mt-0.5">•</span>
+                  <span data-i18n="srv1Point3">Expert Installation &amp; Blind-Spot System Design</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="px-6 sm:px-7 pb-6 pt-4 border-t border-gold-500/20">
+            <a href="#survey" onclick="preselectService('CCTV Security Cameras')" class="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300 font-bold text-sm">
+              <span data-i18n="srvCta">Book Free CCTV Site Survey</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Electric Safety Fencing -->
+        <div class="bg-navy-800/90 border border-gold-500/30 hover:border-gold-400 rounded-3xl overflow-hidden flex flex-col justify-between transition-all shadow-xl group">
+          <div>
+            <div class="relative h-48 overflow-hidden bg-navy-950 border-b border-gold-500/25">
+              <img
+                src="https://images.unsplash.com/photo-1584467541268-b040f83be3fd?auto=format&fit=crop&w=800&q=80"
+                alt="High-Security Electric Perimeter Safety Fencing"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/20 to-transparent"></div>
+              <span class="absolute bottom-3 left-4 px-3 py-1 rounded-lg bg-navy-950/90 border border-gold-400/50 text-gold-300 text-xs font-bold">
+                Instant Alarm &amp; Backup
+              </span>
+            </div>
+            <div class="p-6 sm:p-7">
+              <h3 class="text-xl sm:text-2xl font-extrabold text-gold-400 mb-4" data-i18n="srv2Title">
+                Electric Safety Fencing
+              </h3>
+              <ul class="space-y-3 text-slate-200 text-sm sm:text-base">
+                <li class="flex items-start gap-2.5">
+                  <span class="text-gold-400 font-bold mt-0.5">•</span>
+                  <span data-i18n="srv2Point1">High-Security Perimeter Intrusion Protection</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-gold-400 font-bold mt-0.5">•</span>
+                  <span data-i18n="srv2Point2">Instant Alarm Integration &amp; 24/7 Backup Power</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-gold-400 font-bold mt-0.5">•</span>
+                  <span data-i18n="srv2Point3">Professional Risk Assessment &amp; Maintenance</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="px-6 sm:px-7 pb-6 pt-4 border-t border-gold-500/20">
+            <a href="#survey" onclick="preselectService('Electric Safety Fencing')" class="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300 font-bold text-sm">
+              <span data-i18n="srv2Cta">Request Perimeter Assessment</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Solar Power Plants -->
+        <div class="bg-navy-800/90 border border-gold-500/30 hover:border-gold-400 rounded-3xl overflow-hidden flex flex-col justify-between transition-all shadow-xl group">
+          <div>
+            <div class="relative h-48 overflow-hidden bg-navy-950 border-b border-gold-500/25">
+              <img
+                src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80"
+                alt="Turnkey Solar Power Plant Installation"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/20 to-transparent"></div>
+              <span class="absolute bottom-3 left-4 px-3 py-1 rounded-lg bg-navy-950/90 border border-gold-400/50 text-gold-300 text-xs font-bold">
+                Cut Bills Up to 80%
+              </span>
+            </div>
+            <div class="p-6 sm:p-7">
+              <h3 class="text-xl sm:text-2xl font-extrabold text-gold-400 mb-4" data-i18n="srv3Title">
+                Solar Power Plants
+              </h3>
+              <ul class="space-y-3 text-slate-200 text-sm sm:text-base">
+                <li class="flex items-start gap-2.5">
+                  <span class="text-gold-400 font-bold mt-0.5">•</span>
+                  <span data-i18n="srv3Point1">Cut Electricity Bills by Up to 80%</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-gold-400 font-bold mt-0.5">•</span>
+                  <span data-i18n="srv3Point2">Residential &amp; Commercial Turnkey Setup (Net Metering)</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-gold-400 font-bold mt-0.5">•</span>
+                  <span data-i18n="srv3Point3">Tier-1 Warranty-Backed Panels &amp; Hybrid Inverters</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="px-6 sm:px-7 pb-6 pt-4 border-t border-gold-500/20">
+            <a href="#survey" onclick="preselectService('Solar Power Plant')" class="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300 font-bold text-sm">
+              <span data-i18n="srv3Cta">Calculate Solar Savings</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Completed Projects & Engineering Case Log Section -->
+  <section id="projects" class="py-16 sm:py-24 border-b border-gold-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="text-gold-400 font-bold text-xs sm:text-sm uppercase tracking-widest" data-i18n="projectsEyebrow">
+            Verified Field Portfolio
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2" data-i18n="projectsTitle">
+            Completed Projects &amp; Commissioning Log
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl" data-i18n="projectsDesc">
+            Inspect real-world electrical, solar, and security installations delivered across Peshawar, Mardan, Hattar, Swat, and Abbottabad.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onclick="toggleAddProjectModal(true)"
+          class="self-start md:self-auto px-4 py-3 rounded-xl bg-navy-800 hover:bg-navy-700 border border-gold-500/50 text-gold-300 text-xs sm:text-sm font-bold flex items-center gap-2 transition-all cursor-pointer shadow-md"
+        >
+          <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+          </svg>
+          <span data-i18n="addProjectBtn">+ Add Completed Project (Admin)</span>
+        </button>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap items-center gap-2.5 mb-8" id="project-filters">
+        <button type="button" onclick="filterProjects('All')" data-filter="All" class="filter-tab active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-gold-500 text-navy-950 transition-all cursor-pointer">
+          <span data-i18n="filterAll">All Projects</span>
+        </button>
+        <button type="button" onclick="filterProjects('Solar Power Plants')" data-filter="Solar Power Plants" class="filter-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-navy-800 text-slate-200 hover:text-gold-300 border border-gold-500/25 transition-all cursor-pointer">
+          <span data-i18n="filterSolar">Solar Power Plants</span>
+        </button>
+        <button type="button" onclick="filterProjects('CCTV Security')" data-filter="CCTV Security" class="filter-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-navy-800 text-slate-200 hover:text-gold-300 border border-gold-500/25 transition-all cursor-pointer">
+          <span data-i18n="filterCctv">CCTV Security</span>
+        </button>
+        <button type="button" onclick="filterProjects('Electric Fencing')" data-filter="Electric Fencing" class="filter-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-navy-800 text-slate-200 hover:text-gold-300 border border-gold-500/25 transition-all cursor-pointer">
+          <span data-i18n="filterFence">Electric Fencing</span>
+        </button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Client Reviews & Live Rating Section -->
+  <section id="reviews" class="py-16 sm:py-24 bg-navy-950/60 border-b border-gold-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <!-- Left Column: Overall Rating Summary + Interactive Rating Form -->
+        <div class="lg:col-span-5 space-y-6">
+          <div>
+            <span class="text-gold-400 font-bold text-xs sm:text-sm uppercase tracking-widest" data-i18n="reviewsEyebrow">
+              Client Satisfaction &amp; Proof
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2" data-i18n="reviewsTitle">
+              Client Ratings &amp; Reviews
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base mt-2" data-i18n="reviewsDesc">
+              Read verified feedback from homeowners, plazas, and factories across KPK—or rate a project I completed for you.
+            </p>
+          </div>
+
+          <!-- Overall Rating Score Card -->
+          <div class="bg-navy-800 border border-gold-500/40 rounded-3xl p-6 flex items-center justify-between gap-4 shadow-lg">
+            <div>
+              <div class="text-4xl sm:text-5xl font-extrabold text-gold-400" id="summary-avg-rating">5.0</div>
+              <div class="flex items-center gap-1 text-gold-400 text-lg mt-1" id="summary-stars">
+                ★★★★★
+              </div>
+              <div class="text-slate-300 text-xs sm:text-sm mt-1">
+                <span data-i18n="basedOnText">Based on</span> <span id="summary-total-reviews" class="font-bold text-white">4</span> <span data-i18n="verifiedReviewsText">verified KPK client reviews</span>
+              </div>
+            </div>
+            <div class="text-end space-y-1 text-xs text-slate-300">
+              <div class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-semibold" data-i18n="badgeOnTime">
+                ✓ 100% On-Time Handover
+              </div>
+              <div class="px-3 py-1 rounded-full bg-gold-500/15 border border-gold-500/30 text-gold-300 font-semibold" data-i18n="badgeWarranty">
+                ✓ PEC Standard Wiring
+              </div>
+            </div>
+          </div>
+
+          <!-- Rate & Review My Work Form -->
+          <div class="bg-navy-800 border-2 border-gold-500/40 rounded-3xl p-6 sm:p-7 shadow-xl">
+            <h3 class="text-xl font-extrabold text-gold-400 mb-1" data-i18n="rateFormTitle">
+              Rate &amp; Review My Work
+            </h3>
+            <p class="text-slate-300 text-xs sm:text-sm mb-5" data-i18n="rateFormSubtitle">
+              Worked with Engr. Jan Sher Khan? Share your experience to help others across KPK.
+            </p>
+
+            <form id="review-form" onsubmit="handleReviewSubmit(event)" class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2" data-i18n="labelYourRating">
+                  Your Star Rating *
+                </label>
+                <div class="flex items-center gap-2" id="star-selector">
+                  <button type="button" onclick="setRating(1)" data-star="1" class="star-btn text-3xl text-gold-400 hover:scale-110 transition-transform cursor-pointer p-1" aria-label="1 Star">★</button>
+                  <button type="button" onclick="setRating(2)" data-star="2" class="star-btn text-3xl text-gold-400 hover:scale-110 transition-transform cursor-pointer p-1" aria-label="2 Stars">★</button>
+                  <button type="button" onclick="setRating(3)" data-star="3" class="star-btn text-3xl text-gold-400 hover:scale-110 transition-transform cursor-pointer p-1" aria-label="3 Stars">★</button>
+                  <button type="button" onclick="setRating(4)" data-star="4" class="star-btn text-3xl text-gold-400 hover:scale-110 transition-transform cursor-pointer p-1" aria-label="4 Stars">★</button>
+                  <button type="button" onclick="setRating(5)" data-star="5" class="star-btn text-3xl text-gold-400 hover:scale-110 transition-transform cursor-pointer p-1" aria-label="5 Stars">★</button>
+                  <span id="selected-rating-text" class="text-sm font-bold text-gold-300 ms-2">5 / 5</span>
+                </div>
+                <input type="hidden" id="review-rating-value" value="5" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label for="reviewer-name" class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="labelClientName">Your Name *</label>
+                  <input
+                    id="reviewer-name"
+                    type="text"
+                    required
+                    placeholder="e.g. Tariq Mahmood"
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 focus:border-gold-400 focus:outline-none text-white text-sm"
+                  />
+                </div>
+                <div>
+                  <label for="reviewer-city" class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="labelClientCity">City / Area in KPK *</label>
+                  <input
+                    id="reviewer-city"
+                    type="text"
+                    required
+                    placeholder="e.g. Hayatabad, Peshawar"
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 focus:border-gold-400 focus:outline-none text-white text-sm"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="reviewer-service" class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="labelServiceCategory">Service Completed *</label>
+                <select
+                  id="reviewer-service"
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 focus:border-gold-400 focus:outline-none text-white text-sm"
+                >
+                  <option value="Solar Power Plants">Solar Power Plants</option>
+                  <option value="CCTV Security Cameras">CCTV Security Cameras</option>
+                  <option value="Electric Safety Fencing">Electric Safety Fencing</option>
+                  <option value="Complete Security & Solar Combo">Complete Security &amp; Solar Combo</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="reviewer-comment" class="block text-xs font-semibold text-slate-300 mb-1" data-i18n="labelReviewText">Your Review *</label>
+                <textarea
+                  id="reviewer-comment"
+                  rows="3"
+                  required
+                  placeholder="Share how the installation, neatness of wiring, and system performance went..."
+                  class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 focus:border-gold-400 focus:outline-none text-white text-sm"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                id="submit-review-btn"
+                class="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-300 hover:to-gold-400 text-navy-950 font-extrabold text-sm sm:text-base shadow-lg shadow-gold-500/20 transition-all cursor-pointer"
+              >
+                <span data-i18n="submitReviewBtn">Submit Verified Review</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right Column: Live Feed of Verified Client Reviews -->
+        <div class="lg:col-span-7">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-white" data-i18n="recentReviewsHeading">Recent Client Endorsements</h3>
+            <span id="storage-status-pill" class="text-xs px-3 py-1 rounded-full bg-navy-800 border border-gold-500/30 text-gold-300">
+              Live Feed Active
+            </span>
+          </div>
+
+          <div id="reviews-list" class="space-y-4">
+            <!-- Populated dynamically via JS / Supabase -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Site Survey & WhatsApp Quote Estimator Section -->
+  <section id="survey" class="py-16 sm:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-navy-800 via-navy-800 to-navy-950 border-2 border-gold-500/50 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="inline-block px-3.5 py-1 rounded-full bg-gold-500/15 border border-gold-400/40 text-gold-300 text-xs font-bold uppercase tracking-wider mb-3" data-i18n="surveyBadge">
+            Free On-Site Engineering Visit
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white" data-i18n="surveyTitle">
+            Request Your Free Site Survey &amp; Quote
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-2" data-i18n="surveySubtitle">
+            Select your requirements below and send them directly to Engr. Jan Sher Khan on WhatsApp (<span dir="ltr" class="text-gold-400 font-bold">0333-5827731</span>) for a rapid technical estimate anywhere in KPK.
+          </p>
+        </div>
+
+        <form id="survey-form" onsubmit="sendWhatsAppQuote(event)" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="quote-name" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5" data-i18n="quoteNameLabel">Your Name *</label>
+              <input
+                id="quote-name"
+                type="text"
+                required
+                placeholder="Enter your full name"
+                class="w-full px-4 py-3 rounded-xl bg-navy-900 border border-gold-500/35 focus:border-gold-400 focus:outline-none text-white text-sm"
+              />
+            </div>
+
+            <div>
+              <label for="quote-city" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5" data-i18n="quoteCityLabel">City / District in KPK *</label>
+              <select
+                id="quote-city"
+                class="w-full px-4 py-3 rounded-xl bg-navy-900 border border-gold-500/35 focus:border-gold-400 focus:outline-none text-white text-sm"
+              >
+                <option value="Peshawar">Peshawar</option>
+                <option value="Mardan">Mardan</option>
+                <option value="Swat / Mingora">Swat / Mingora</option>
+                <option value="Abbottabad">Abbottabad</option>
+                <option value="Haripur / Hattar">Haripur / Hattar</option>
+                <option value="Nowshera">Nowshera</option>
+                <option value="Charsadda">Charsadda</option>
+                <option value="Swabi">Swabi</option>
+                <option value="Kohat">Kohat</option>
+                <option value="Bannu / D.I. Khan">Bannu / D.I. Khan</option>
+                <option value="Other City in KPK">Other City in KPK</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="quote-service" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5" data-i18n="quoteServiceLabel">Required Solution *</label>
+              <select
+                id="quote-service"
+                class="w-full px-4 py-3 rounded-xl bg-navy-900 border border-gold-500/35 focus:border-gold-400 focus:outline-none text-white text-sm"
+              >
+                <option value="Solar Power Plant">Solar Power Plant (Hybrid / On-Grid)</option>
+                <option value="CCTV Security Cameras">CCTV Security Cameras (24/7 Mobile View)</option>
+                <option value="Electric Safety Fencing">Electric Safety Fencing (Perimeter Security)</option>
+                <option value="Full Security & Solar Combo">Complete Combo (Solar + CCTV + Electric Fence)</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="quote-property" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5" data-i18n="quotePropertyLabel">Property Type *</label>
+              <select
+                id="quote-property"
+                class="w-full px-4 py-3 rounded-xl bg-navy-900 border border-gold-500/35 focus:border-gold-400 focus:outline-none text-white text-sm"
+              >
+                <option value="Residential Home">Residential Home / Hujra</option>
+                <option value="Commercial Plaza / Shop">Commercial Plaza / Office / Hospital</option>
+                <option value="Industrial Factory / Warehouse">Industrial Factory / Warehouse</option>
+                <option value="Agricultural Tube Well">Agricultural Tube Well / Farm</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="quote-notes" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5" data-i18n="quoteNotesLabel">System Size or Special Notes (Optional)</label>
+            <input
+              id="quote-notes"
+              type="text"
+              placeholder="e.g. 10kW solar system, or 8 CCTV cameras + 400ft boundary electric fence"
+              class="w-full px-4 py-3 rounded-xl bg-navy-900 border border-gold-500/35 focus:border-gold-400 focus:outline-none text-white text-sm"
+            />
+          </div>
+
+          <div class="pt-2 flex flex-col sm:flex-row items-center gap-4">
+            <button
+              type="submit"
+              class="w-full sm:flex-1 py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base shadow-lg shadow-emerald-900/40 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
+            >
+              <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+              </svg>
+              <span data-i18n="quoteSubmitBtn">Send Free Survey Request via WhatsApp</span>
+            </button>
+
+            <a
+              href="tel:+923335827731"
+              class="w-full sm:w-auto py-4 px-6 rounded-xl bg-navy-900 hover:bg-navy-700 border border-gold-500/50 text-gold-300 font-bold text-base text-center transition-all"
+            >
+              <span data-i18n="quoteCallBtn">Or Call Now</span>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 border-t border-gold-500/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-start">
+          <div class="text-2xl font-extrabold text-gold-400" data-i18n="brandName">Engr. Jan Sher Khan</div>
+          <div class="text-slate-300 text-sm mt-1" data-i18n="footerTagline">
+            Certified Electrical Engineer • CCTV Security, Electric Safety Fencing &amp; Solar Power Plants
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <a
+            href="tel:+923335827731"
+            class="px-5 py-3 rounded-xl bg-navy-800 border border-gold-500/40 text-gold-300 font-bold text-sm hover:bg-navy-700 transition-all"
+            dir="ltr"
+          >
+            📞 0333-5827731
+          </a>
+          <a
+            href="https://wa.me/923335827731"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all"
+          >
+            WhatsApp Chat
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600 text-navy-950 py-3 px-4 text-center font-extrabold text-sm sm:text-base tracking-wide">
+      <span data-i18n="footerBanner">Serving All Across KPK • خیبر پختونخوا بھر میں خدمات دستیاب ہیں</span>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Quick-Chat Button -->
+  <a
+    href="https://wa.me/923335827731?text=Assalam-o-Alaikum%20Engr.%20Jan%20Sher%20Khan%2C%20I%20visited%20your%20website%20and%20want%20to%20discuss%20a%20project."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp"
+    class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white shadow-2xl shadow-emerald-950/80 flex items-center justify-center transition-transform hover:scale-105 border-2 border-white/20"
+  >
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+    </svg>
+  </a>
+
+  <!-- Add New Completed Project Modal (Admin Mode with Photo Upload) -->
+  <div id="add-project-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-navy-950/85 backdrop-blur-sm p-4">
+    <div class="bg-navy-800 border-2 border-gold-500/50 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-gold-500/25 pb-4 mb-5">
+        <h3 class="text-xl font-extrabold text-gold-400" data-i18n="modalAddProjectTitle">Add Completed Project</h3>
+        <button type="button" onclick="toggleAddProjectModal(false)" class="text-slate-400 hover:text-white p-1.5 rounded-lg cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <form id="add-project-form" onsubmit="handleAddProject(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Admin Passcode (Default: 5827) *</label>
+          <input id="proj-passcode" type="password" required placeholder="Enter admin passcode" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Project Title *</label>
+          <input id="proj-title" type="text" required placeholder="e.g. 20kW Hybrid Solar System — University Town" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Category *</label>
+            <select id="proj-category" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm">
+              <option value="Solar Power Plants">Solar Power Plants</option>
+              <option value="CCTV Security">CCTV Security</option>
+              <option value="Electric Fencing">Electric Fencing</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Location (KPK) *</label>
+            <input id="proj-location" type="text" required placeholder="e.g. Peshawar, KPK" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">System Capacity / Spec *</label>
+            <input id="proj-capacity" type="text" required placeholder="e.g. 20kW + Lithium Bank" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Result / Savings *</label>
+            <input id="proj-metric" type="text" required placeholder="e.g. 82% Bill Reduction" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Project Site Photo (Optional)</label>
+          <input id="proj-photo" type="file" accept="image/*" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-gold-500/30 text-slate-300 text-xs file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-gold-500 file:text-navy-950 file:font-bold" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Technical Summary *</label>
+          <textarea id="proj-summary" rows="3" required placeholder="Brief description of installation, panels/cameras used, and handover testing..." class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm"></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-2">
+          <button type="button" onclick="toggleAddProjectModal(false)" class="px-4 py-2.5 rounded-xl bg-navy-900 text-slate-300 text-sm font-semibold cursor-pointer">
+            Cancel
+          </button>
+          <button type="submit" id="publish-project-btn" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-gold-400 to-gold-500 text-navy-950 font-extrabold text-sm cursor-pointer">
+            Publish Project
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Application Script (Supabase Ready + Built-In Local/Cloud Fallback) -->
+  <script>
+    // =========================================================================
+    // 1. SUPABASE CONFIGURATION (PASTE YOUR KEYS HERE WHEN DEPLOYING)
+    // =========================================================================
+    const SUPABASE_URL = 'https://tahtepvldawvmhobdjec.supabase.co/rest/v1/'; // e.g. 'https://xyzcompany.supabase.co'
+    const SUPABASE_ANON_KEY = 'sb_publishable_WO3td8C-NGd-k_MYyAiTgQ_77uyx4FT'; // e.g. 'eyJhbGciOiJIUzI1NiIsInR5cCI...'
+    const ADMIN_PASSCODE = '5827'; // Last 4 digits of 0333-5827731
+
+    let supabaseClient = null;
+    if (
+      window.supabase &&
+      SUPABASE_URL.startsWith('https://') &&
+      SUPABASE_ANON_KEY.length > 20
+    ) {
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
+
+    // =========================================================================
+    // 2. SAMPLE PORTFOLIO & VERIFIED CLIENT REVIEWS (KPK)
+    // =========================================================================
+    const DEFAULT_PROJECTS = [
+      {
+        id: 'proj-1',
+        title: '15kW Hybrid Solar System with Net Metering',
+        titleUr: '15 کلو واٹ ہائبرڈ سولر سسٹم اور نیٹ میٹرنگ',
+        category: 'Solar Power Plants',
+        location: 'Hayatabad Phase 6, Peshawar',
+        capacity: '15 kW Tier-1 Bifacial',
+        metric: '80% Bill Reduction',
+        rating: 5.0,
+        badge: 'Verified Handover',
+        imageUrl: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80',
+        summary: 'Complete rooftop structure fabrication, IP65 hybrid inverter commissioning, DC/AC surge protection, and PESCO green-meter approval.'
+      },
+      {
+        id: 'proj-2',
+        title: '32-Channel 4K IP CCTV & Remote Mobile Monitoring',
+        titleUr: '32 چینل 4K آئی پی سی سی ٹی وی اور موبائل مانیٹرنگ',
+        category: 'CCTV Security',
+        location: 'Hattar Industrial Estate, Haripur',
+        capacity: '32x Night-Vision IP Cams',
+        metric: '24/7 Live Phone View',
+        rating: 5.0,
+        badge: 'Verified Handover',
+        imageUrl: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80',
+        summary: 'Full factory floor and loading-bay coverage with PoE switches, armored fiber/CAT6 conduits, and instant phone motion alerts.'
+      },
+      {
+        id: 'proj-3',
+        title: 'High-Voltage Electric Safety Fence & Siren Integration',
+        titleUr: 'ہائی وولٹیج الیکٹرک سیفٹی فینس اور الارم سسٹم',
+        category: 'Electric Fencing',
+        location: 'University Town, Peshawar',
+        capacity: '480 ft 8-Strand Perimeter',
+        metric: 'Zero Blind-Spot Security',
+        rating: 4.9,
+        badge: 'Verified Handover',
+        imageUrl: 'https://images.unsplash.com/photo-1584467541268-b040f83be3fd?auto=format&fit=crop&w=800&q=80',
+        summary: 'Non-lethal pulsed high-voltage boundary fence with battery backup, tamper alarm integration, and warning signage.'
+      },
+      {
+        id: 'proj-4',
+        title: '10kW On-Grid Commercial Solar Plant',
+        titleUr: '10 کلو واٹ کمرشل آن گرڈ سولر پاور پلانٹ',
+        category: 'Solar Power Plants',
+        location: 'Nowshera Road, Mardan',
+        capacity: '10 kW Commercial Array',
+        metric: '78% Monthly Savings',
+        rating: 5.0,
+        badge: 'Verified Handover',
+        imageUrl: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80',
+        summary: 'Engineered for a commercial medical plaza to offset peak daytime AC loads with full earthing pits (< 2 Ohms).'
+      }
+    ];
+
+    const DEFAULT_REVIEWS = [
+      {
+        id: 'rev-1',
+        name: 'Haji Fazal-ur-Rehman',
+        city: 'Hayatabad, Peshawar',
+        service: 'Solar Power Plants',
+        rating: 5,
+        comment: 'Engr. Jan Sher Khan installed our 15kW solar system. Very clean wiring, proper earthing, and our monthly WAPDA bill dropped by nearly 80%. Highly trustworthy engineer!',
+        date: 'Verified Client'
+      },
+      {
+        id: 'rev-2',
+        name: 'Dr. Kamran Afridi',
+        city: 'University Town, Peshawar',
+        service: 'Electric Safety Fencing',
+        rating: 5,
+        comment: 'Installed electric safety fencing and 12 HD CCTV cameras around our residence. Live mobile viewing works smoothly and the alarm backup gives complete peace of mind.',
+        date: 'Verified Client'
+      },
+      {
+        id: 'rev-3',
+        name: 'Malik Waqas Khan',
+        city: 'Mardan',
+        service: 'CCTV Security Cameras',
+        rating: 5,
+        comment: 'Best technical team in KPK. He surveyed our plaza first, eliminated all camera blind spots, and delivered everything right on schedule.',
+        date: 'Verified Client'
+      },
+      {
+        id: 'rev-4',
+        name: 'Sheikh Nadeem Ahmed',
+        city: 'Abbottabad',
+        service: 'Solar Power Plants',
+        rating: 5,
+        comment: 'Honest consultation and genuine Tier-1 panels. Even in cold weather our hybrid backup runs the whole house effortlessly.',
+        date: 'Verified Client'
+      }
+    ];
+
+    let projectsState = [...DEFAULT_PROJECTS];
+    let reviewsState = [...DEFAULT_REVIEWS];
+    let currentFilter = 'All';
+    let currentLang = 'en';
+
+    // =========================================================================
+    // 3. BILINGUAL TRANSLATIONS (ENGLISH / URDU)
+    // =========================================================================
+    const TRANSLATIONS = {
+      en: {
+        brandName: 'Engr. Jan Sher Khan',
+        brandSubtitle: 'Security & Solar Solutions Specialist',
+        navServices: 'Expertise',
+        navProjects: 'Completed Work',
+        navReviews: 'Client Reviews',
+        navSurvey: 'Free Site Survey',
+        trustBadge: '★ CERTIFIED ENGINEER (PEC REGISTERED) • FREE SITE SURVEY & QUOTE ★',
+        heroHeadline1: 'Complete Security &',
+        heroHeadline2: 'Clean Energy Solutions',
+        heroSubheadline: 'Serving Residential, Commercial & Industrial Clients All Across Khyber Pakhtunkhwa (KPK) with precision-engineered CCTV Surveillance, High-Voltage Electric Safety Fencing, and Turnkey Solar Power Plants.',
+        ctaWhatsapp: 'WhatsApp: 0333-5827731',
+        ctaSurvey: 'Request Free Site Survey',
+        ctaRate: 'Rate My Work ★',
+        statRatingPrefix: 'Verified Rating',
+        statSavings: 'Up to 80%',
+        statSavingsLabel: 'Electricity Bill Reduction',
+        statCoverage: 'All KPK',
+        statCoverageLabel: '24/7 On-Site Support',
+        cardRoleTag: 'PEC Certified Electrical Engineer',
+        cardSpec1Title: 'CCTV Security Cameras',
+        cardSpec1Desc: '24/7 Live Phone View • HD Night Vision',
+        cardSpec2Title: 'Electric Safety Fencing',
+        cardSpec2Desc: 'High-Security Perimeter & Instant Alarm',
+        cardSpec3Title: 'Solar Power Plants',
+        cardSpec3Desc: 'Hybrid, On-Grid & Net-Metered Systems',
+        directLineLabel: 'Call / WhatsApp Direct',
+        copyNumberBtn: 'Copy Number',
+        servicesEyebrow: 'Core Engineering Expertise',
+        servicesTitle: 'Turnkey Security & Solar Engineering Across KPK',
+        servicesDesc: 'Every system is custom-engineered after a free on-site load & risk assessment—built for maximum durability, clean wiring, and long-term reliability.',
+        srv1Title: 'CCTV Security Cameras',
+        srv1Point1: 'View Live Footage on Your Phone 24/7',
+        srv1Point2: 'HD Night Vision & Smart Motion Alerts',
+        srv1Point3: 'Expert Installation & Blind-Spot System Design',
+        srvCta: 'Book Free CCTV Site Survey',
+        srv2Title: 'Electric Safety Fencing',
+        srv2Point1: 'High-Security Perimeter Intrusion Protection',
+        srv2Point2: 'Instant Alarm Integration & 24/7 Backup Power',
+        srv2Point3: 'Professional Risk Assessment & Maintenance',
+        srv2Cta: 'Request Perimeter Assessment',
+        srv3Title: 'Solar Power Plants',
+        srv3Point1: 'Cut Electricity Bills by Up to 80%',
+        srv3Point2: 'Residential & Commercial Turnkey Setup (Net Metering)',
+        srv3Point3: 'Tier-1 Warranty-Backed Panels & Hybrid Inverters',
+        srv3Cta: 'Calculate Solar Savings',
+        projectsEyebrow: 'Verified Field Portfolio',
+        projectsTitle: 'Completed Projects & Commissioning Log',
+        projectsDesc: 'Inspect real-world electrical, solar, and security installations delivered across Peshawar, Mardan, Hattar, Swat, and Abbottabad.',
+        addProjectBtn: '+ Add Completed Project (Admin)',
+        filterAll: 'All Projects',
+        filterSolar: 'Solar Power Plants',
+        filterCctv: 'CCTV Security',
+        filterFence: 'Electric Fencing',
+        reviewsEyebrow: 'Client Satisfaction & Proof',
+        reviewsTitle: 'Client Ratings & Reviews',
+        reviewsDesc: 'Read verified feedback from homeowners, plazas, and factories across KPK—or rate a project I completed for you.',
+        basedOnText: 'Based on',
+        verifiedReviewsText: 'verified KPK client reviews',
+        badgeOnTime: '✓ 100% On-Time Handover',
+        badgeWarranty: '✓ PEC Standard Wiring',
+        rateFormTitle: 'Rate & Review My Work',
+        rateFormSubtitle: 'Worked with Engr. Jan Sher Khan? Share your experience to help others across KPK.',
+        labelYourRating: 'Your Star Rating *',
+        labelClientName: 'Your Name *',
+        labelClientCity: 'City / Area in KPK *',
+        labelServiceCategory: 'Service Completed *',
+        labelReviewText: 'Your Review *',
+        submitReviewBtn: 'Submit Verified Review',
+        recentReviewsHeading: 'Recent Client Endorsements',
+        surveyBadge: 'Free On-Site Engineering Visit',
+        surveyTitle: 'Request Your Free Site Survey & Quote',
+        surveySubtitle: 'Select your requirements below and send them directly to Engr. Jan Sher Khan on WhatsApp (0333-5827731) for a rapid technical estimate anywhere in KPK.',
+        quoteNameLabel: 'Your Name *',
+        quoteCityLabel: 'City / District in KPK *',
+        quoteServiceLabel: 'Required Solution *',
+        quotePropertyLabel: 'Property Type *',
+        quoteNotesLabel: 'System Size or Special Notes (Optional)',
+        quoteSubmitBtn: 'Send Free Survey Request via WhatsApp',
+        quoteCallBtn: 'Or Call Now',
+        footerTagline: 'Certified Electrical Engineer • CCTV Security, Electric Safety Fencing & Solar Power Plants',
+        footerBanner: 'Serving All Across KPK • خیبر پختونخوا بھر میں خدمات دستیاب ہیں',
+        modalAddProjectTitle: 'Add Completed Project'
+      },
+      ur: {
+        brandName: 'انجینئر جان شیر خان',
+        brandSubtitle: 'سیکیورٹی اور سولر سلوشنز اسپیشلسٹ',
+        navServices: 'مہارتیں',
+        navProjects: 'مکمل شدہ پراجیکٹس',
+        navReviews: 'کلائنٹس کی آراء',
+        navSurvey: 'مفت سائٹ سروے',
+        trustBadge: '★ مستند انجینئر (PEC رجسٹرڈ) • مفت سائٹ سروے اور تخمینہ ★',
+        heroHeadline1: 'مکمل سیکیورٹی اور',
+        heroHeadline2: 'سولر توانائی کے جدید حل',
+        heroSubheadline: 'خیبر پختونخوا بھر میں گھریلو، کمرشل اور انڈسٹریل صارفین کے لیے جدید سی سی ٹی وی کیمرے، الیکٹرک سیفٹی فینسنگ (برقی باڑ) اور سولر پاور پلانٹس کی معیاری تنصیب۔',
+        ctaWhatsapp: 'واٹس ایپ: 0333-5827731',
+        ctaSurvey: 'مفت سائٹ سروے بک کریں',
+        ctaRate: 'میرے کام کی درجہ بندی کریں ★',
+        statRatingPrefix: 'تصدیق شدہ ریٹنگ',
+        statSavings: '80% تک بچت',
+        statSavingsLabel: 'بجلی کے بلوں میں کمی',
+        statCoverage: 'پورا خیبر پختونخوا',
+        statCoverageLabel: '24/7 آن سائٹ سروس',
+        cardRoleTag: 'مستند الیکٹریکل انجینئر (PEC)',
+        cardSpec1Title: 'سی سی ٹی وی سیکیورٹی کیمرے',
+        cardSpec1Desc: 'اپنے موبائل پر 24 گھنٹے لائیو ویڈیو دیکھیں',
+        cardSpec2Title: 'الیکٹرک سیفٹی فینسنگ (برقی باڑ)',
+        cardSpec2Desc: 'ہائی سیکیورٹی باؤنڈری اور فوری الارم سسٹم',
+        cardSpec3Title: 'سولر پاور پلانٹس',
+        cardSpec3Desc: 'ہائبرڈ، آن گرڈ اور نیٹ میٹرنگ سسٹم',
+        directLineLabel: 'ابھی کال یا واٹس ایپ کریں',
+        copyNumberBtn: 'نمبر کاپی کریں',
+        servicesEyebrow: 'بنیادی انجینئرنگ خدمات',
+        servicesTitle: 'خیبر پختونخوا بھر میں سیکیورٹی اور سولر کے مکمل حل',
+        servicesDesc: 'ہر سسٹم مفت سائٹ سروے اور لوڈ کے مکمل معائنے کے بعد جدید انجینئرنگ اصولوں کے مطابق نصب کیا جاتا ہے۔',
+        srv1Title: 'سی سی ٹی وی سیکیورٹی کیمرے',
+        srv1Point1: 'اپنے موبائل پر 24 گھنٹے لائیو ویڈیو دیکھیں',
+        srv1Point2: 'ایچ ڈی نائٹ ویژن اور موشن الرٹس',
+        srv1Point3: 'ماہرانہ تنصیب اور سسٹم ڈیزائن',
+        srvCta: 'مفت سی سی ٹی وی سروے بک کریں',
+        srv2Title: 'الیکٹرک سیفٹی فینسنگ (برقی باڑ)',
+        srv2Point1: 'ہائی سیکیورٹی باؤنڈری اور دراندازی سے مکمل تحفظ',
+        srv2Point2: 'فوری الارم سسٹم اور بیک اپ پاور',
+        srv2Point3: 'پیشہ ورانہ معائنہ اور مرمت کی سہولت',
+        srv2Cta: 'باؤنڈری سیکیورٹی سروے کروائیں',
+        srv3Title: 'سولر پاور پلانٹس',
+        srv3Point1: 'بجلی کے بلوں میں 80 فیصد تک کمی لائیں',
+        srv3Point2: 'گھریلو اور کمرشل سولر سسٹم کی مکمل تنصیب',
+        srv3Point3: 'وارنٹی شدہ سولر پینلز اور انورٹرز',
+        srv3Cta: 'سولر بچت کا تخمینہ لگوائیں',
+        projectsEyebrow: 'تصدیق شدہ فیلڈ پورٹ فولیو',
+        projectsTitle: 'مکمل شدہ پراجیکٹس اور انجینئرنگ ریکارڈ',
+        projectsDesc: 'پشاور، مردان، حطار، سوات اور ایبٹ آباد میں مکمل کیے گئے سولر اور سیکیورٹی پراجیکٹس ملاحظہ کریں۔',
+        addProjectBtn: '+ نیا پراجیکٹ شامل کریں (ایڈمن)',
+        filterAll: 'تمام پراجیکٹس',
+        filterSolar: 'سولر پاور پلانٹس',
+        filterCctv: 'سی سی ٹی وی سیکیورٹی',
+        filterFence: 'الیکٹرک فینسنگ',
+        reviewsEyebrow: 'صارفین کا اعتماد',
+        reviewsTitle: 'کلائنٹس کی ریٹنگ اور آراء',
+        reviewsDesc: 'خیبر پختونخوا بھر کے معزز صارفین کے تاثرات پڑھیں یا ہمارے کام پر اپنی رائے دیں۔',
+        basedOnText: 'کل',
+        verifiedReviewsText: 'تصدیق شدہ صارفین کی آراء کی بنیاد پر',
+        badgeOnTime: '✓ بروقت تکمیل کی ضمانت',
+        badgeWarranty: '✓ معیاری انجینئرنگ وائرنگ',
+        rateFormTitle: 'میرے کام کی ریٹنگ اور رائے دیں',
+        rateFormSubtitle: 'اگر آپ نے انجینئر جان شیر خان سے کام کروایا ہے تو اپنا تجربہ شیئر کریں۔',
+        labelYourRating: 'آپ کی سٹار ریٹنگ *',
+        labelClientName: 'آپ کا نام *',
+        labelClientCity: 'شہر / علاقہ (خیبر پختونخوا) *',
+        labelServiceCategory: 'مکمل کی گئی سروس *',
+        labelReviewText: 'آپ کے تاثرات *',
+        submitReviewBtn: 'اپنی رائے شائع کریں',
+        recentReviewsHeading: 'حالیہ کلائنٹس کے تاثرات',
+        surveyBadge: 'مفت آن سائٹ انجینئرنگ وزٹ',
+        surveyTitle: 'مفت سائٹ سروے اور کوٹیشن حاصل کریں',
+        surveySubtitle: 'نیچے دی گئی تفصیلات پُر کریں اور فوری تخمینے کے لیے براہ راست واٹس ایپ (0333-5827731) پر بھیجیں۔',
+        quoteNameLabel: 'آپ کا نام *',
+        quoteCityLabel: 'شہر / ضلع *',
+        quoteServiceLabel: 'مطلوبہ سروس *',
+        quotePropertyLabel: 'جائیداد کی قسم *',
+        quoteNotesLabel: 'سسٹم کا سائز یا اضافی تفصیل (اختیاری)',
+        quoteSubmitBtn: 'واٹس ایپ پر مفت سروے کی درخواست بھیجیں',
+        quoteCallBtn: 'یا ابھی کال کریں',
+        footerTagline: 'مستند الیکٹریکل انجینئر • سی سی ٹی وی کیمرے، برقی باڑ اور سولر پاور پلانٹس',
+        footerBanner: 'خیبر پختونخوا بھر میں خدمات دستیاب ہیں • Serving All Across KPK',
+        modalAddProjectTitle: 'نیا مکمل شدہ پراجیکٹ شامل کریں'
+      }
+    };
+
+    // =========================================================================
+    // 4. SUPABASE DATA SYNC (WITH LOCALSTORAGE FALLBACK)
+    // =========================================================================
+    async function loadDatabaseData() {
+      const statusPill = document.getElementById('storage-status-pill');
+
+      if (supabaseClient) {
+        try {
+          if (statusPill) statusPill.textContent = 'Supabase Cloud Connected';
+
+          const { data: revData, error: revErr } = await supabaseClient
+            .from('reviews')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+          if (!revErr && revData && revData.length > 0) {
+            reviewsState = [
+              ...revData.map((r) => ({
+                id: r.id,
+                name: r.name,
+                city: r.city,
+                service: r.service,
+                rating: r.rating,
+                comment: r.comment,
+                date: 'Verified Client'
+              })),
+              ...DEFAULT_REVIEWS
+            ];
+          }
+
+          const { data: projData, error: projErr } = await supabaseClient
+            .from('projects')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+          if (!projErr && projData && projData.length > 0) {
+            projectsState = [
+              ...projData.map((p) => ({
+                id: p.id,
+                title: p.title,
+                category: p.category,
+                location: p.location,
+                capacity: p.capacity,
+                metric: p.metric,
+                rating: 5.0,
+                badge: 'Verified Handover',
+                imageUrl: p.image_url || DEFAULT_PROJECTS[0].imageUrl,
+                summary: p.summary
+              })),
+              ...DEFAULT_PROJECTS
+            ];
+          }
+        } catch (err) {
+          console.warn('Supabase fetch fallback:', err);
+        }
+      } else {
+        // Fallback to browser localStorage so user changes persist locally until Supabase keys are pasted
+        if (statusPill) statusPill.textContent = 'Local Storage Ready (Add Supabase Keys)';
+        const savedReviews = JSON.parse(localStorage.getItem('jsk_reviews') || '[]');
+        const savedProjects = JSON.parse(localStorage.getItem('jsk_projects') || '[]');
+        if (savedReviews.length) reviewsState = [...savedReviews, ...DEFAULT_REVIEWS];
+        if (savedProjects.length) projectsState = [...savedProjects, ...DEFAULT_PROJECTS];
+      }
+
+      renderProjects();
+      renderReviews();
+    }
+
+    // =========================================================================
+    // 5. RENDER FUNCTIONS
+    // =========================================================================
+    function renderProjects() {
+      const grid = document.getElementById('projects-grid');
+      if (!grid) return;
+
+      const filtered = currentFilter === 'All'
+        ? projectsState
+        : projectsState.filter((p) => p.category === currentFilter);
+
+      grid.innerHTML = filtered.map((proj) => {
+        const displayTitle = currentLang === 'ur' && proj.titleUr ? proj.titleUr : proj.title;
+        const imgSrc = proj.imageUrl || 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80';
+        return `
+          <article class="bg-navy-800/95 border border-gold-500/30 hover:border-gold-400 rounded-3xl overflow-hidden flex flex-col justify-between transition-all shadow-xl group">
+            <div>
+              <div class="relative h-48 overflow-hidden bg-navy-950 border-b border-gold-500/20">
+                <img
+                  src="${escapeHtml(imgSrc)}"
+                  alt="${escapeHtml(displayTitle)}"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-navy-950/90 border border-gold-400/40 text-gold-300 text-xs font-bold">
+                  ${escapeHtml(proj.category)}
+                </span>
+                <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-navy-950/90 text-xs text-slate-200">
+                  📍 ${escapeHtml(proj.location)}
+                </span>
+              </div>
+
+              <div class="p-6 pb-2">
+                <h3 class="text-lg sm:text-xl font-extrabold text-white leading-snug mb-2">
+                  ${escapeHtml(displayTitle)}
+                </h3>
+
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                  ${escapeHtml(proj.summary)}
+                </p>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6">
+              <div class="grid grid-cols-3 gap-2 bg-navy-950/80 border border-gold-500/20 rounded-2xl p-3 mb-4 text-center">
+                <div>
+                  <div class="text-[11px] text-slate-400 uppercase">System Spec</div>
+                  <div class="text-xs sm:text-sm font-bold text-gold-400 mt-0.5 truncate">${escapeHtml(proj.capacity)}</div>
+                </div>
+                <div class="border-x border-gold-500/20 px-1">
+                  <div class="text-[11px] text-slate-400 uppercase">Performance</div>
+                  <div class="text-xs sm:text-sm font-bold text-emerald-400 mt-0.5 truncate">${escapeHtml(proj.metric)}</div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400 uppercase">Rating</div>
+                  <div class="text-xs sm:text-sm font-bold text-gold-300 mt-0.5">${Number(proj.rating || 5).toFixed(1)} ★</div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-400">✓ ${escapeHtml(proj.badge || 'Verified Handover')}</span>
+                <a
+                  href="https://wa.me/923335827731?text=${encodeURIComponent('Assalam-o-Alaikum Engr. Jan Sher Khan, I saw your project "' + proj.title + '" and want a similar quote.')}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-gold-400 hover:text-gold-300 font-bold"
+                >
+                  Request Similar Quote →
+                </a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function renderReviews() {
+      const list = document.getElementById('reviews-list');
+      if (!list) return;
+
+      const total = reviewsState.length;
+      const sum = reviewsState.reduce((acc, r) => acc + Number(r.rating || 5), 0);
+      const avg = total > 0 ? (sum / total).toFixed(1) : '5.0';
+
+      const heroAvg = document.getElementById('hero-avg-rating');
+      const heroCount = document.getElementById('hero-review-count');
+      const summaryAvg = document.getElementById('summary-avg-rating');
+      const summaryTotal = document.getElementById('summary-total-reviews');
+
+      if (heroAvg) heroAvg.textContent = avg;
+      if (heroCount) heroCount.textContent = total;
+      if (summaryAvg) summaryAvg.textContent = avg;
+      if (summaryTotal) summaryTotal.textContent = total;
+
+      list.innerHTML = reviewsState.map((rev) => {
+        const starsCount = Math.min(5, Math.max(1, Math.round(Number(rev.rating || 5))));
+        const starsHtml = '★'.repeat(starsCount) + '<span class="text-slate-600">' + '★'.repeat(5 - starsCount) + '</span>';
+        return `
+          <div class="bg-navy-800/95 border border-gold-500/25 rounded-2xl p-5 sm:p-6 shadow-md">
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-extrabold text-white text-base">${escapeHtml(rev.name)}</span>
+                  <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[11px] font-semibold">
+                    ✓ ${escapeHtml(rev.date || 'Verified Client')}
+                  </span>
+                </div>
+                <div class="text-xs text-slate-400 mt-0.5">
+                  📍 ${escapeHtml(rev.city)} • <span class="text-gold-400 font-medium">${escapeHtml(rev.service)}</span>
+                </div>
+              </div>
+              <div class="text-gold-400 text-base tracking-wider" aria-label="${starsCount} out of 5 stars">
+                ${starsHtml}
+              </div>
+            </div>
+            <p class="text-slate-200 text-sm leading-relaxed">
+              "${escapeHtml(rev.comment)}"
+            </p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // =========================================================================
+    // 6. EVENT HANDLERS
+    // =========================================================================
+    function filterProjects(category) {
+      currentFilter = category;
+      document.querySelectorAll('.filter-tab').forEach((btn) => {
+        if (btn.getAttribute('data-filter') === category) {
+          btn.className = 'filter-tab active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-gold-500 text-navy-950 transition-all cursor-pointer';
+        } else {
+          btn.className = 'filter-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-navy-800 text-slate-200 hover:text-gold-300 border border-gold-500/25 transition-all cursor-pointer';
+        }
+      });
+      renderProjects();
+    }
+
+    function setRating(rating) {
+      document.getElementById('review-rating-value').value = rating;
+      document.getElementById('selected-rating-text').textContent = `${rating} / 5`;
+      document.querySelectorAll('.star-btn').forEach((btn) => {
+        const starVal = Number(btn.getAttribute('data-star'));
+        if (starVal <= rating) {
+          btn.classList.remove('text-slate-600');
+          btn.classList.add('text-gold-400');
+        } else {
+          btn.classList.remove('text-gold-400');
+          btn.classList.add('text-slate-600');
+        }
+      });
+    }
+
+    async function handleReviewSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('reviewer-name').value.trim();
+      const city = document.getElementById('reviewer-city').value.trim();
+      const service = document.getElementById('reviewer-service').value;
+      const rating = Number(document.getElementById('review-rating-value').value || 5);
+      const comment = document.getElementById('reviewer-comment').value.trim();
+
+      if (!name || !city || !comment) return;
+
+      const btn = document.getElementById('submit-review-btn');
+      btn.disabled = true;
+      btn.classList.add('opacity-70');
+
+      const newReview = {
+        id: 'rev-' + Date.now(),
+        name,
+        city,
+        service,
+        rating,
+        comment,
+        date: 'Verified Client'
+      };
+
+      try {
+        if (supabaseClient) {
+          const { error } = await supabaseClient.from('reviews').insert([
+            { name, city, service, rating, comment }
+          ]);
+          if (error) throw error;
+        } else {
+          const existing = JSON.parse(localStorage.getItem('jsk_reviews') || '[]');
+          existing.unshift(newReview);
+          localStorage.setItem('jsk_reviews', JSON.stringify(existing));
+        }
+
+        reviewsState.unshift(newReview);
+        renderReviews();
+        document.getElementById('review-form').reset();
+        setRating(5);
+        showToast(currentLang === 'ur' ? 'شکریہ! آپ کی رائے کامیابی سے شامل کر دی گئی ہے۔' : 'Thank you! Your review has been published.');
+      } catch (err) {
+        console.error('Error submitting review:', err);
+        showToast('Could not save to cloud. Check Supabase table permissions.');
+      } finally {
+        btn.disabled = false;
+        btn.classList.remove('opacity-70');
+      }
+    }
+
+    function toggleAddProjectModal(show) {
+      const modal = document.getElementById('add-project-modal');
+      if (!modal) return;
+      if (show) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    async function handleAddProject(e) {
+      e.preventDefault();
+      const passcode = document.getElementById('proj-passcode').value.trim();
+      if (passcode !== ADMIN_PASSCODE) {
+        showToast('Incorrect Admin Passcode.');
+        return;
+      }
+
+      const title = document.getElementById('proj-title').value.trim();
+      const category = document.getElementById('proj-category').value;
+      const location = document.getElementById('proj-location').value.trim();
+      const capacity = document.getElementById('proj-capacity').value.trim();
+      const metric = document.getElementById('proj-metric').value.trim();
+      const summary = document.getElementById('proj-summary').value.trim();
+      const photoInput = document.getElementById('proj-photo');
+
+      const btn = document.getElementById('publish-project-btn');
+      btn.disabled = true;
+      btn.textContent = 'Publishing...';
+
+      let uploadedImageUrl = 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80';
+
+      try {
+        if (photoInput.files && photoInput.files[0]) {
+          const file = photoInput.files[0];
+          if (supabaseClient) {
+            const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+            const { error: uploadErr } = await supabaseClient.storage
+              .from('project-photos')
+              .upload(fileName, file);
+            if (!uploadErr) {
+              const { data: pubData } = supabaseClient.storage
+                .from('project-photos')
+                .getPublicUrl(fileName);
+              if (pubData && pubData.publicUrl) {
+                uploadedImageUrl = pubData.publicUrl;
+              }
+            }
+          } else {
+            uploadedImageUrl = await readFileAsDataUrl(file);
+          }
+        }
+
+        const newProject = {
+          id: 'proj-' + Date.now(),
+          title,
+          category,
+          location,
+          capacity,
+          metric,
+          rating: 5.0,
+          badge: 'Verified Handover',
+          imageUrl: uploadedImageUrl,
+          summary
+        };
+
+        if (supabaseClient) {
+          const { error } = await supabaseClient.from('projects').insert([
+            {
+              title,
+              category,
+              location,
+              capacity,
+              metric,
+              summary,
+              image_url: uploadedImageUrl
+            }
+          ]);
+          if (error) throw error;
+        } else {
+          const existing = JSON.parse(localStorage.getItem('jsk_projects') || '[]');
+          existing.unshift(newProject);
+          localStorage.setItem('jsk_projects', JSON.stringify(existing));
+        }
+
+        projectsState.unshift(newProject);
+        renderProjects();
+        document.getElementById('add-project-form').reset();
+        toggleAddProjectModal(false);
+        showToast('New completed project published to portfolio!');
+      } catch (err) {
+        console.error('Error adding project:', err);
+        showToast('Error publishing project. Check Supabase table/bucket setup.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Publish Project';
+      }
+    }
+
+    function readFileAsDataUrl(file) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function preselectService(serviceName) {
+      const select = document.getElementById('quote-service');
+      if (select) select.value = serviceName;
+    }
+
+    function sendWhatsAppQuote(e) {
+      e.preventDefault();
+      const name = document.getElementById('quote-name').value.trim();
+      const city = document.getElementById('quote-city').value;
+      const service = document.getElementById('quote-service').value;
+      const property = document.getElementById('quote-property').value;
+      const notes = document.getElementById('quote-notes').value.trim();
+
+      const messageLines = [
+        'Assalam-o-Alaikum Engr. Jan Sher Khan,',
+        'I would like to request a *Free Site Survey & Quote*:',
+        `• *Name:* ${name}`,
+        `• *City (KPK):* ${city}`,
+        `• *Required Solution:* ${service}`,
+        `• *Property Type:* ${property}`,
+        notes ? `• *Details:* ${notes}` : ''
+      ].filter(Boolean);
+
+      const waUrl = `https://wa.me/923335827731?text=${encodeURIComponent(messageLines.join('\n'))}`;
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+      showToast(currentLang === 'ur' ? 'واٹس ایپ چیٹ کھولی جا رہی ہے...' : 'Opening WhatsApp with your site survey details...');
+    }
+
+    function copyPhoneNumber() {
+      const tempInput = document.createElement('input');
+      tempInput.value = '0333-5827731';
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showToast(currentLang === 'ur' ? 'نمبر کاپی ہو گیا: 0333-5827731' : 'Phone number copied: 0333-5827731');
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ur' : 'en';
+      const htmlEl = document.documentElement;
+      htmlEl.lang = currentLang;
+      htmlEl.dir = currentLang === 'ur' ? 'rtl' : 'ltr';
+
+      const toggleLabel = document.getElementById('lang-toggle-label');
+      if (toggleLabel) {
+        toggleLabel.textContent = currentLang === 'ur' ? 'English' : 'اردو';
+      }
+
+      const dict = TRANSLATIONS[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+
+      renderProjects();
+      renderReviews();
+    }
+
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = 'pointer-events-auto bg-navy-800 border-2 border-gold-400 text-white px-4 py-3 rounded-2xl shadow-2xl text-sm font-semibold flex items-center justify-between gap-3 transition-all';
+      toast.innerHTML = `<span>${escapeHtml(message)}</span><span class="text-gold-400 font-bold">✓</span>`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3800);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadDatabaseData();
+    });
+  </script>
+</body>
+</html>
