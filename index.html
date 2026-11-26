@@ -1133,20 +1133,17 @@
             .select('*')
             .order('created_at', { ascending: false });
 
-          if (!revErr && revData && revData.length > 0) {
-            reviewsState = [
-              ...revData.map((r) => ({
-                id: r.id,
-                name: r.name,
-                city: r.city,
-                service: r.service,
-                rating: r.rating,
-                comment: r.comment,
-                date: 'Verified Client'
-              })),
-              ...DEFAULT_REVIEWS
-            ];
-          }
+          if (revErr) throw revErr;
+
+reviewsState = (revData || []).map((r) => ({
+  id: r.id,
+  name: r.name,
+  city: r.city,
+  service: r.service,
+  rating: r.rating,
+  comment: r.comment,
+  date: 'Approved Client'
+}));
 
           const { data: projData, error: projErr } = await supabaseClient
             .from('projects')
@@ -1376,11 +1373,10 @@
           localStorage.setItem('jsk_reviews', JSON.stringify(existing));
         }
 
-        reviewsState.unshift(newReview);
-        renderReviews();
+        // Do not display the review until the administrator approves it.
         document.getElementById('review-form').reset();
         setRating(5);
-        showToast(currentLang === 'ur' ? 'شکریہ! آپ کی رائے کامیابی سے شامل کر دی گئی ہے۔' : 'Thank you! Your review has been published.');
+        showToast(currentLang === 'ur' ? 'شکریہ! آپ کی رائے کامیابی سے شامل کر دی گئی ہے۔' : 'Thank you! Your review is awaiting administrator approval.');
       } catch (err) {
         console.error('Error submitting review:', err);
         showToast('Could not save to cloud. Check Supabase table permissions.');
