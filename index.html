@@ -72,8 +72,17 @@
           <a href="#survey" class="hover:text-gold-400 transition-colors" data-i18n="navSurvey">Free Site Survey</a>
         </nav>
 
-        <!-- Actions: Language Switcher + Quick Call -->
+        <!-- Actions: Admin Dashboard + Language Switcher + Quick Call -->
         <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <button
+            id="header-admin-btn"
+            type="button"
+            onclick="toggleAdminModal(true)"
+            class="px-3 py-2.5 rounded-xl border border-gold-500/40 bg-navy-900 hover:bg-navy-800 text-gold-300 text-xs font-bold transition-all cursor-pointer"
+          >
+            Admin
+          </button>
+
           <button
             id="lang-toggle"
             type="button"
@@ -423,7 +432,7 @@
 
         <button
           type="button"
-          onclick="toggleAddProjectModal(true)"
+          onclick="toggleAdminModal(true)"
           class="self-start md:self-auto px-4 py-3 rounded-xl bg-navy-800 hover:bg-navy-700 border border-gold-500/50 text-gold-300 text-xs sm:text-sm font-bold flex items-center gap-2 transition-all cursor-pointer shadow-md"
         >
           <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -755,83 +764,147 @@
     </svg>
   </a>
 
-  <!-- Add New Completed Project Modal (Admin Mode with Photo Upload) -->
-  <div id="add-project-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-navy-950/85 backdrop-blur-sm p-4">
-    <div class="bg-navy-800 border-2 border-gold-500/50 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-      <div class="flex items-center justify-between border-b border-gold-500/25 pb-4 mb-5">
-        <h3 class="text-xl font-extrabold text-gold-400" data-i18n="modalAddProjectTitle">Add Completed Project</h3>
-        <button type="button" onclick="toggleAddProjectModal(false)" class="text-slate-400 hover:text-white p-1.5 rounded-lg cursor-pointer">
-          ✕
-        </button>
+  <!-- Administrator Login & Dashboard Modal -->
+  <div id="admin-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-navy-950/85 backdrop-blur-sm p-4">
+    <div class="bg-navy-800 border-2 border-gold-500/50 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[92vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-gold-500/25 pb-4 mb-6">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-gold-400">Administrator Dashboard</h3>
+          <p id="admin-session-status" class="text-xs text-slate-300 mt-0.5">Sign in with your Supabase administrator account</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            id="admin-logout-btn"
+            type="button"
+            onclick="handleAdminLogout()"
+            class="hidden px-3.5 py-1.5 rounded-xl bg-navy-900 hover:bg-rose-950 border border-rose-500/40 text-rose-300 text-xs font-bold cursor-pointer"
+          >
+            Logout
+          </button>
+          <button type="button" onclick="toggleAdminModal(false)" class="text-slate-400 hover:text-white p-1.5 rounded-lg cursor-pointer">
+            ✕
+          </button>
+        </div>
       </div>
 
-      <form id="add-project-form" onsubmit="handleAddProject(event)" class="space-y-4">
+      <!-- Supabase Email/Password Login Form -->
+      <form id="admin-login-form" onsubmit="handleAdminLogin(event)" class="space-y-4 max-w-md mx-auto py-2">
         <div>
-          <label class="block text-xs font-bold text-slate-300 mb-1">Admin Passcode (Default: 5827) *</label>
-          <input id="proj-passcode" type="password" required placeholder="Enter admin passcode" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
+          <label for="admin-email" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Admin Email *</label>
+          <input
+            id="admin-email"
+            type="email"
+            required
+            autocomplete="email"
+            placeholder="admin@example.com"
+            class="w-full px-4 py-3 rounded-xl bg-navy-900 border border-gold-500/35 focus:border-gold-400 focus:outline-none text-white text-sm"
+          />
         </div>
-
         <div>
-          <label class="block text-xs font-bold text-slate-300 mb-1">Project Title *</label>
-          <input id="proj-title" type="text" required placeholder="e.g. 20kW Hybrid Solar System — University Town" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
+          <label for="admin-password" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Password *</label>
+          <input
+            id="admin-password"
+            type="password"
+            required
+            autocomplete="current-password"
+            placeholder="Enter administrator password"
+            class="w-full px-4 py-3 rounded-xl bg-navy-900 border border-gold-500/35 focus:border-gold-400 focus:outline-none text-white text-sm"
+          />
         </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-bold text-slate-300 mb-1">Category *</label>
-            <select id="proj-category" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm">
-              <option value="Solar Power Plants">Solar Power Plants</option>
-              <option value="CCTV Security">CCTV Security</option>
-              <option value="Electric Fencing">Electric Fencing</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-300 mb-1">Location (KPK) *</label>
-            <input id="proj-location" type="text" required placeholder="e.g. Peshawar, KPK" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-bold text-slate-300 mb-1">System Capacity / Spec *</label>
-            <input id="proj-capacity" type="text" required placeholder="e.g. 20kW + Lithium Bank" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-300 mb-1">Result / Savings *</label>
-            <input id="proj-metric" type="text" required placeholder="e.g. 82% Bill Reduction" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-slate-300 mb-1">Project Site Photo (Optional)</label>
-          <input id="proj-photo" type="file" accept="image/*" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-gold-500/30 text-slate-300 text-xs file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-gold-500 file:text-navy-950 file:font-bold" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-slate-300 mb-1">Technical Summary *</label>
-          <textarea id="proj-summary" rows="3" required placeholder="Brief description of installation, panels/cameras used, and handover testing..." class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm"></textarea>
-        </div>
-
-        <div class="flex items-center justify-end gap-3 pt-2">
-          <button type="button" onclick="toggleAddProjectModal(false)" class="px-4 py-2.5 rounded-xl bg-navy-900 text-slate-300 text-sm font-semibold cursor-pointer">
-            Cancel
-          </button>
-          <button type="submit" id="publish-project-btn" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-gold-400 to-gold-500 text-navy-950 font-extrabold text-sm cursor-pointer">
-            Publish Project
-          </button>
-        </div>
+        <button
+          type="submit"
+          id="admin-login-btn"
+          class="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-300 hover:to-gold-400 text-navy-950 font-extrabold text-sm shadow-lg cursor-pointer"
+        >
+          Sign In to Dashboard
+        </button>
       </form>
+
+      <!-- Authenticated Administrator Workspace -->
+      <div id="admin-dashboard-panel" class="hidden space-y-8">
+        <!-- Pending Reviews Queue -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-lg font-extrabold text-gold-400">Pending Client Reviews</h4>
+            <button
+              type="button"
+              onclick="loadPendingReviews()"
+              class="text-xs px-3 py-1.5 rounded-lg bg-navy-900 hover:bg-navy-700 border border-gold-500/30 text-gold-300 font-semibold cursor-pointer"
+            >
+              Refresh Queue
+            </button>
+          </div>
+          <div id="pending-reviews-list" class="space-y-3">
+            <p class="text-sm text-slate-400">Loading pending reviews...</p>
+          </div>
+        </div>
+
+        <!-- Add Completed Project Form (Authenticated via Supabase session) -->
+        <div class="border-t border-gold-500/25 pt-6">
+          <h4 class="text-lg font-extrabold text-gold-400 mb-4" data-i18n="modalAddProjectTitle">Add Completed Project</h4>
+          <form id="add-project-form" onsubmit="handleAddProject(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1">Project Title *</label>
+              <input id="proj-title" type="text" required placeholder="e.g. 20kW Hybrid Solar System — University Town" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">Category *</label>
+                <select id="proj-category" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm">
+                  <option value="Solar Power Plants">Solar Power Plants</option>
+                  <option value="CCTV Security">CCTV Security</option>
+                  <option value="Electric Fencing">Electric Fencing</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">Location (KPK) *</label>
+                <input id="proj-location" type="text" required placeholder="e.g. Peshawar, KPK" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">System Capacity / Spec *</label>
+                <input id="proj-capacity" type="text" required placeholder="e.g. 20kW + Lithium Bank" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">Result / Savings *</label>
+                <input id="proj-metric" type="text" required placeholder="e.g. 82% Bill Reduction" class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1">Project Site Photo (Optional)</label>
+              <input id="proj-photo" type="file" accept="image/*" class="w-full px-3.5 py-2 rounded-xl bg-navy-900 border border-gold-500/30 text-slate-300 text-xs file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-gold-500 file:text-navy-950 file:font-bold" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1">Technical Summary *</label>
+              <textarea id="proj-summary" rows="3" required placeholder="Brief description of installation, panels/cameras used, and handover testing..." class="w-full px-3.5 py-2.5 rounded-xl bg-navy-900 border border-gold-500/30 text-white text-sm"></textarea>
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-2">
+              <button type="button" onclick="toggleAdminModal(false)" class="px-4 py-2.5 rounded-xl bg-navy-900 text-slate-300 text-sm font-semibold cursor-pointer">
+                Close
+              </button>
+              <button type="submit" id="publish-project-btn" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-gold-400 to-gold-500 text-navy-950 font-extrabold text-sm cursor-pointer">
+                Publish Project
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Application Script (Supabase Ready + Built-In Local/Cloud Fallback) -->
+  <!-- Application Script -->
   <script>
     // =========================================================================
-    // 1. SUPABASE CONFIGURATION (PASTE YOUR KEYS HERE WHEN DEPLOYING)
+    // 1. SUPABASE CONFIGURATION
     // =========================================================================
-    const SUPABASE_URL = 'https://tahtepvldawvmhobdjec.supabase.co'; // e.g. 'https://xyzcompany.supabase.co'
-    const SUPABASE_ANON_KEY = 'sb_publishable_WO3td8C-NGd-k_MYyAiTgQ_77uyx4FT'; // e.g. 'eyJhbGciOiJIUzI1NiIsInR5cCI...'
-
+    const SUPABASE_URL = 'https://tahtepvldawvmhobdjec.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_WO3td8C-NGd-k_MYyAiTgQ_77uyx4FT';
 
     let supabaseClient = null;
     if (
@@ -841,6 +914,8 @@
     ) {
       supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     }
+
+    let currentAdminSession = null;
 
     // =========================================================================
     // 2. SAMPLE PORTFOLIO & VERIFIED CLIENT REVIEWS (KPK)
@@ -1119,31 +1194,220 @@
     };
 
     // =========================================================================
-    // 4. SUPABASE DATA SYNC (WITH LOCALSTORAGE FALLBACK)
+    // 4. SUPABASE AUTH & DATA SYNC
     // =========================================================================
+    function initAdminAuthListener() {
+      if (!supabaseClient || !supabaseClient.auth) return;
+
+      supabaseClient.auth.getSession().then(({ data }) => {
+        currentAdminSession = data?.session || null;
+        updateAdminUI();
+      });
+
+      supabaseClient.auth.onAuthStateChange((_event, session) => {
+        currentAdminSession = session;
+        updateAdminUI();
+        if (session) {
+          loadPendingReviews();
+        }
+      });
+    }
+
+    function updateAdminUI() {
+      const loginForm = document.getElementById('admin-login-form');
+      const dashPanel = document.getElementById('admin-dashboard-panel');
+      const logoutBtn = document.getElementById('admin-logout-btn');
+      const statusEl = document.getElementById('admin-session-status');
+      const headerBtn = document.getElementById('header-admin-btn');
+
+      const isAuthed = Boolean(currentAdminSession && currentAdminSession.user);
+      if (loginForm) loginForm.classList.toggle('hidden', isAuthed);
+      if (dashPanel) dashPanel.classList.toggle('hidden', !isAuthed);
+      if (logoutBtn) logoutBtn.classList.toggle('hidden', !isAuthed);
+
+      if (statusEl) {
+        statusEl.textContent = isAuthed
+          ? `Signed in as ${currentAdminSession.user.email}`
+          : 'Sign in with your Supabase administrator account';
+      }
+      if (headerBtn) {
+        headerBtn.textContent = isAuthed ? 'Admin ●' : 'Admin';
+      }
+    }
+
+    function toggleAdminModal(show) {
+      const modal = document.getElementById('admin-modal');
+      if (!modal) return;
+      if (show) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        updateAdminUI();
+        if (currentAdminSession) {
+          loadPendingReviews();
+        }
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      if (!supabaseClient || !supabaseClient.auth) {
+        showToast('Supabase client is not initialized.');
+        return;
+      }
+
+      const email = document.getElementById('admin-email').value.trim();
+      const password = document.getElementById('admin-password').value;
+      const btn = document.getElementById('admin-login-btn');
+
+      btn.disabled = true;
+      btn.textContent = 'Signing in...';
+
+      try {
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        currentAdminSession = data.session;
+        document.getElementById('admin-login-form').reset();
+        updateAdminUI();
+        await loadPendingReviews();
+        showToast('Administrator signed in.');
+      } catch (err) {
+        console.error('Admin login error:', err);
+        showToast(err.message || 'Invalid administrator credentials.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Sign In to Dashboard';
+      }
+    }
+
+    async function handleAdminLogout() {
+      if (!supabaseClient || !supabaseClient.auth) return;
+      const { error } = await supabaseClient.auth.signOut();
+      if (error) {
+        showToast('Error signing out.');
+        return;
+      }
+      currentAdminSession = null;
+      updateAdminUI();
+      showToast('Signed out of administrator session.');
+    }
+
+    async function loadApprovedReviewsOnly() {
+      if (!supabaseClient) {
+        reviewsState = [...DEFAULT_REVIEWS];
+        return;
+      }
+
+      const { data: revData, error: revErr } = await supabaseClient
+        .from('reviews')
+        .select('*')
+        .eq('approved', true)
+        .order('created_at', { ascending: false });
+
+      if (revErr) throw revErr;
+
+      reviewsState = (revData || []).map((r) => ({
+        id: r.id,
+        name: r.name,
+        city: r.city,
+        service: r.service,
+        rating: r.rating,
+        comment: r.comment,
+        date: 'Approved Client'
+      }));
+    }
+
+    async function loadPendingReviews() {
+      const container = document.getElementById('pending-reviews-list');
+      if (!container || !supabaseClient || !currentAdminSession) return;
+
+      container.innerHTML = '<p class="text-sm text-slate-400">Loading pending reviews...</p>';
+
+      const { data, error } = await supabaseClient
+        .from('reviews')
+        .select('*')
+        .eq('approved', false)
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error('Pending reviews error:', error);
+        container.innerHTML = '<p class="text-sm text-rose-300">Could not load pending reviews. Check reviews policies.</p>';
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        container.innerHTML = '<p class="text-sm text-slate-400 bg-navy-900/60 border border-gold-500/20 rounded-2xl p-4">No pending reviews waiting for approval.</p>';
+        return;
+      }
+
+      container.innerHTML = data.map((rev) => `
+        <div class="bg-navy-900/90 border border-gold-500/30 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="space-y-1">
+            <div class="font-bold text-white text-sm">${escapeHtml(rev.name)} <span class="text-gold-400">(${Number(rev.rating || 5)} ★)</span></div>
+            <div class="text-xs text-slate-400">${escapeHtml(rev.city)} • ${escapeHtml(rev.service)}</div>
+            <p class="text-xs sm:text-sm text-slate-200 mt-1">"${escapeHtml(rev.comment)}"</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onclick="moderateReview('${escapeHtml(String(rev.id))}', 'approve')"
+              class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold cursor-pointer"
+            >
+              Approve
+            </button>
+            <button
+              type="button"
+              onclick="moderateReview('${escapeHtml(String(rev.id))}', 'reject')"
+              class="px-3.5 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold cursor-pointer"
+            >
+              Reject
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function moderateReview(reviewId, action) {
+      if (!supabaseClient || !currentAdminSession) {
+        showToast('Please sign in as administrator first.');
+        return;
+      }
+
+      try {
+        if (action === 'approve') {
+          const { error } = await supabaseClient
+            .from('reviews')
+            .update({ approved: true })
+            .eq('id', reviewId);
+          if (error) throw error;
+          showToast('Review approved and published.');
+        } else {
+          const { error } = await supabaseClient
+            .from('reviews')
+            .delete()
+            .eq('id', reviewId);
+          if (error) throw error;
+          showToast('Review rejected and removed.');
+        }
+
+        await loadPendingReviews();
+        await loadApprovedReviewsOnly();
+        renderReviews();
+      } catch (err) {
+        console.error('Moderation error:', err);
+        showToast('Could not update review status.');
+      }
+    }
+
     async function loadDatabaseData() {
       const statusPill = document.getElementById('storage-status-pill');
 
       if (supabaseClient) {
         try {
           if (statusPill) statusPill.textContent = 'Supabase Cloud Connected';
-
-          const { data: revData, error: revErr } = await supabaseClient
-            .from('reviews')
-            .select('*')
-            .order('created_at', { ascending: false });
-
-          if (revErr) throw revErr;
-
-reviewsState = (revData || []).map((r) => ({
-  id: r.id,
-  name: r.name,
-  city: r.city,
-  service: r.service,
-  rating: r.rating,
-  comment: r.comment,
-  date: 'Approved Client'
-}));
+          await loadApprovedReviewsOnly();
 
           const { data: projData, error: projErr } = await supabaseClient
             .from('projects')
@@ -1171,7 +1435,6 @@ reviewsState = (revData || []).map((r) => ({
           console.warn('Supabase fetch fallback:', err);
         }
       } else {
-        // Fallback to browser localStorage so user changes persist locally until Supabase keys are pasted
         if (statusPill) statusPill.textContent = 'Local Storage Ready (Add Supabase Keys)';
         const savedReviews = JSON.parse(localStorage.getItem('jsk_reviews') || '[]');
         const savedProjects = JSON.parse(localStorage.getItem('jsk_projects') || '[]');
@@ -1373,10 +1636,9 @@ reviewsState = (revData || []).map((r) => ({
           localStorage.setItem('jsk_reviews', JSON.stringify(existing));
         }
 
-        // Do not display the review until the administrator approves it.
         document.getElementById('review-form').reset();
         setRating(5);
-        showToast(currentLang === 'ur' ? 'شکریہ! آپ کی رائے کامیابی سے شامل کر دی گئی ہے۔' : 'Thank you! Your review is awaiting administrator approval.');
+        showToast(currentLang === 'ur' ? 'شکریہ! آپ کی رائے منظوری کے لیے بھیج دی گئی ہے۔' : 'Thank you! Your review is awaiting administrator approval.');
       } catch (err) {
         console.error('Error submitting review:', err);
         showToast('Could not save to cloud. Check Supabase table permissions.');
@@ -1386,23 +1648,11 @@ reviewsState = (revData || []).map((r) => ({
       }
     }
 
-    function toggleAddProjectModal(show) {
-      const modal = document.getElementById('add-project-modal');
-      if (!modal) return;
-      if (show) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-      } else {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-    }
-
     async function handleAddProject(e) {
       e.preventDefault();
-      const passcode = document.getElementById('proj-passcode').value.trim();
-      if (passcode !== ADMIN_PASSCODE) {
-        showToast('Incorrect Admin Passcode.');
+      if (!currentAdminSession || !currentAdminSession.user) {
+        showToast('Please sign in as administrator first.');
+        toggleAdminModal(true);
         return;
       }
 
@@ -1424,17 +1674,17 @@ reviewsState = (revData || []).map((r) => ({
         if (photoInput.files && photoInput.files[0]) {
           const file = photoInput.files[0];
           if (supabaseClient) {
-            const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
+            const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
             const { error: uploadErr } = await supabaseClient.storage
               .from('project-photos')
               .upload(fileName, file);
-            if (!uploadErr) {
-              const { data: pubData } = supabaseClient.storage
-                .from('project-photos')
-                .getPublicUrl(fileName);
-              if (pubData && pubData.publicUrl) {
-                uploadedImageUrl = pubData.publicUrl;
-              }
+            if (uploadErr) throw uploadErr;
+
+            const { data: pubData } = supabaseClient.storage
+              .from('project-photos')
+              .getPublicUrl(fileName);
+            if (pubData && pubData.publicUrl) {
+              uploadedImageUrl = pubData.publicUrl;
             }
           } else {
             uploadedImageUrl = await readFileAsDataUrl(file);
@@ -1476,11 +1726,11 @@ reviewsState = (revData || []).map((r) => ({
         projectsState.unshift(newProject);
         renderProjects();
         document.getElementById('add-project-form').reset();
-        toggleAddProjectModal(false);
+        toggleAdminModal(false);
         showToast('New completed project published to portfolio!');
       } catch (err) {
         console.error('Error adding project:', err);
-        showToast('Error publishing project. Check Supabase table/bucket setup.');
+        showToast('Error publishing project. Check Supabase auth, table, and bucket policies.');
       } finally {
         btn.disabled = false;
         btn.textContent = 'Publish Project';
@@ -1576,6 +1826,7 @@ reviewsState = (revData || []).map((r) => ({
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+      initAdminAuthListener();
       loadDatabaseData();
     });
   </script>
