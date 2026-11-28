@@ -920,99 +920,99 @@
     // =========================================================================
     // 2. SAMPLE PORTFOLIO & VERIFIED CLIENT REVIEWS (KPK)
     // =========================================================================
-    const DEFAULT_PROJECTS = [
-      {
-        id: 'proj-1',
-        title: '15kW Hybrid Solar System with Net Metering',
-        titleUr: '15 کلو واٹ ہائبرڈ سولر سسٹم اور نیٹ میٹرنگ',
-        category: 'Solar Power Plants',
-        location: 'Hayatabad Phase 6, Peshawar',
-        capacity: '15 kW Tier-1 Bifacial',
-        metric: '80% Bill Reduction',
-        rating: 5.0,
-        badge: 'Verified Handover',
-        imageUrl: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80',
-        summary: 'Complete rooftop structure fabrication, IP65 hybrid inverter commissioning, DC/AC surge protection, and PESCO green-meter approval.'
-      },
-      {
-        id: 'proj-2',
-        title: '32-Channel 4K IP CCTV & Remote Mobile Monitoring',
-        titleUr: '32 چینل 4K آئی پی سی سی ٹی وی اور موبائل مانیٹرنگ',
-        category: 'CCTV Security',
-        location: 'Hattar Industrial Estate, Haripur',
-        capacity: '32x Night-Vision IP Cams',
-        metric: '24/7 Live Phone View',
-        rating: 5.0,
-        badge: 'Verified Handover',
-        imageUrl: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80',
-        summary: 'Full factory floor and loading-bay coverage with PoE switches, armored fiber/CAT6 conduits, and instant phone motion alerts.'
-      },
-      {
-        id: 'proj-3',
-        title: 'High-Voltage Electric Safety Fence & Siren Integration',
-        titleUr: 'ہائی وولٹیج الیکٹرک سیفٹی فینس اور الارم سسٹم',
-        category: 'Electric Fencing',
-        location: 'University Town, Peshawar',
-        capacity: '480 ft 8-Strand Perimeter',
-        metric: 'Zero Blind-Spot Security',
-        rating: 4.9,
-        badge: 'Verified Handover',
-        imageUrl: 'https://images.unsplash.com/photo-1584467541268-b040f83be3fd?auto=format&fit=crop&w=800&q=80',
-        summary: 'Non-lethal pulsed high-voltage boundary fence with battery backup, tamper alarm integration, and warning signage.'
-      },
-      {
-        id: 'proj-4',
-        title: '10kW On-Grid Commercial Solar Plant',
-        titleUr: '10 کلو واٹ کمرشل آن گرڈ سولر پاور پلانٹ',
-        category: 'Solar Power Plants',
-        location: 'Nowshera Road, Mardan',
-        capacity: '10 kW Commercial Array',
-        metric: '78% Monthly Savings',
-        rating: 5.0,
-        badge: 'Verified Handover',
-        imageUrl: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80',
-        summary: 'Engineered for a commercial medical plaza to offset peak daytime AC loads with full earthing pits (< 2 Ohms).'
-      }
-    ];
+    const DEFAULT_PROJECTS = []
+//      {
+  //      id: 'proj-1',
+    //    title: '15kW Hybrid Solar System with Net Metering',
+      //  titleUr: '15 کلو واٹ ہائبرڈ سولر سسٹم اور نیٹ میٹرنگ',
+       // category: 'Solar Power Plants',
+        //location: 'Hayatabad Phase 6, Peshawar',
+        //capacity: '15 kW Tier-1 Bifacial',
+        //metric: '80% Bill Reduction',
+        //rating: 5.0,
+        //badge: 'Verified Handover',
+        //imageUrl: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80',
+        //summary: 'Complete rooftop structure fabrication, IP65 hybrid inverter commissioning, DC/AC surge protection, and PESCO green-meter approval.'
+      //},
+      //{
+        //id: 'proj-2',
+       // title: '32-Channel 4K IP CCTV & Remote Mobile Monitoring',
+        //titleUr: '32 چینل 4K آئی پی سی سی ٹی وی اور موبائل مانیٹرنگ',
+        //category: 'CCTV Security',
+        //location: 'Hattar Industrial Estate, Haripur',
+        //capacity: '32x Night-Vision IP Cams',
+        //metric: '24/7 Live Phone View',
+        //rating: 5.0,
+        //badge: 'Verified Handover',
+        //imageUrl: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80',
+        //summary: 'Full factory floor and loading-bay coverage with PoE switches, armored fiber/CAT6 conduits, and instant phone motion alerts.'
+      //},
+      //{
+        //id: 'proj-3',
+        //title: 'High-Voltage Electric Safety Fence & Siren Integration',
+        //titleUr: 'ہائی وولٹیج الیکٹرک سیفٹی فینس اور الارم سسٹم',
+        //category: 'Electric Fencing',
+        //location: 'University Town, Peshawar',
+        //capacity: '480 ft 8-Strand Perimeter',
+        //metric: 'Zero Blind-Spot Security',
+        //rating: 4.9,
+        //badge: 'Verified Handover',
+        //imageUrl: 'https://images.unsplash.com/photo-1584467541268-b040f83be3fd?auto=format&fit=crop&w=800&q=80',
+        //summary: 'Non-lethal pulsed high-voltage boundary fence with battery backup, tamper alarm integration, and warning signage.'
+      //},
+      //{
+        //id: 'proj-4',
+        //title: '10kW On-Grid Commercial Solar Plant',
+        //titleUr: '10 کلو واٹ کمرشل آن گرڈ سولر پاور پلانٹ',
+        //category: 'Solar Power Plants',
+        //location: 'Nowshera Road, Mardan',
+        //capacity: '10 kW Commercial Array',
+        //metric: '78% Monthly Savings',
+        //rating: 5.0,
+        //badge: 'Verified Handover',
+        //imageUrl: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80',
+        //summary: 'Engineered for a commercial medical plaza to offset peak daytime AC loads with full earthing pits (< 2 Ohms).'
+      //}
+    //];
 
-    const DEFAULT_REVIEWS = [
-      {
-        id: 'rev-1',
-        name: 'Haji Fazal-ur-Rehman',
-        city: 'Hayatabad, Peshawar',
-        service: 'Solar Power Plants',
-        rating: 5,
-        comment: 'Engr. Jan Sher Khan installed our 15kW solar system. Very clean wiring, proper earthing, and our monthly WAPDA bill dropped by nearly 80%. Highly trustworthy engineer!',
-        date: 'Verified Client'
-      },
-      {
-        id: 'rev-2',
-        name: 'Dr. Kamran Afridi',
-        city: 'University Town, Peshawar',
-        service: 'Electric Safety Fencing',
-        rating: 5,
-        comment: 'Installed electric safety fencing and 12 HD CCTV cameras around our residence. Live mobile viewing works smoothly and the alarm backup gives complete peace of mind.',
-        date: 'Verified Client'
-      },
-      {
-        id: 'rev-3',
-        name: 'Malik Waqas Khan',
-        city: 'Mardan',
-        service: 'CCTV Security Cameras',
-        rating: 5,
-        comment: 'Best technical team in KPK. He surveyed our plaza first, eliminated all camera blind spots, and delivered everything right on schedule.',
-        date: 'Verified Client'
-      },
-      {
-        id: 'rev-4',
-        name: 'Sheikh Nadeem Ahmed',
-        city: 'Abbottabad',
-        service: 'Solar Power Plants',
-        rating: 5,
-        comment: 'Honest consultation and genuine Tier-1 panels. Even in cold weather our hybrid backup runs the whole house effortlessly.',
-        date: 'Verified Client'
-      }
-    ];
+    const DEFAULT_REVIEWS = []
+     // {
+      //  id: 'rev-1',
+      //  name: 'Haji Fazal-ur-Rehman',
+       // city: 'Hayatabad, Peshawar',
+        //service: 'Solar Power Plants',
+        //rating: 5,
+      //  comment: 'Engr. Jan Sher Khan installed our 15kW solar system. Very clean wiring, proper earthing, and our monthly WAPDA bill dropped by nearly 80%. Highly trustworthy engineer!',
+        //date: 'Verified Client'
+      //},
+     // {
+       // id: 'rev-2',
+       // name: 'Dr. Kamran Afridi',
+        //city: 'University Town, Peshawar',
+        //service: 'Electric Safety Fencing',
+        //rating: 5,
+       // vcomment: 'Installed electric safety fencing and 12 HD CCTV cameras around our residence. Live mobile viewing works smoothly and the alarm backup gives complete peace of mind.',
+        //date: 'Verified Client'
+      //},
+      //{
+        //id: 'rev-3',
+        //vname: 'Malik Waqas Khan',
+        //vcity: 'Mardan',
+        //service: 'CCTV Security Cameras',
+        //rating: 5,
+        //comment: 'Best technical team in KPK. He surveyed our plaza first, eliminated all camera blind spots, and delivered everything right on schedule.',
+        //date: 'Verified Client'
+      //},
+      //{
+       // id: 'rev-4',
+       // name: 'Sheikh Nadeem Ahmed',
+       // city: 'Abbottabad',
+        //service: 'Solar Power Plants',
+        //rating: 5,
+        //comment: 'Honest consultation and genuine Tier-1 panels. Even in cold weather our hybrid backup runs the whole house effortlessly.',
+        //date: 'Verified Client'
+      //}
+    //];
 
     let projectsState = [...DEFAULT_PROJECTS];
     let reviewsState = [];
